@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: feproduct-deployment
+  labels:
+    app: feproduct
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: feproduct
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: feproduct
+    spec:
+      containers:
+        - name: feproduct
+          image: 192.168.1.8:6300/feproduct:1.0
+      imagePullSecrets:
+        - name: regcred
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              cpu: 400m
+              memory: 900Mi
+            requests:
+              cpu: 200m
+              memory: 512Mi
