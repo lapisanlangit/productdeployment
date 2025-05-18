@@ -16,11 +16,11 @@ spec:
       containers:
         - name: feproduct
           image: 192.168.1.8:6300/beproduct:1.0
+          ports:
+            - containerPort: 5000
           envFrom:
             - secretRef:
               name: my-secret
-          ports:
-            - containerPort: 5000
       imagePullSecrets:
         - name: regcred
        
