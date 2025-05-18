@@ -5,6 +5,7 @@ metadata:
   labels:
     app: beproduct
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: beproduct
@@ -14,14 +15,12 @@ spec:
         app: beproduct
     spec:
       containers:
-        - name: beproduct
+        - name: beproduct 
           image: 192.168.1.8:6300/beproduct:1.0
           ports:
             - containerPort: 5000
           envFrom:
             - secretRef:
-              name: my-secret
+                name: my-secret
       imagePullSecrets:
         - name: regcred
-       
-      
