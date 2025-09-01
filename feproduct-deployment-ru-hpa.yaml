@@ -24,8 +24,6 @@ spec:
           image: 192.168.1.8:6300/feproduct:1.0
           ports:
             - containerPort: 80
-      imagePullSecrets:
-        - name: regcred
           resources:
             limits:
               cpu: 500m
@@ -33,3 +31,6 @@ spec:
             requests:
               cpu: 250m
               memory: 512Mi
+      imagePullSecrets:
+        - name: regcred
+       
