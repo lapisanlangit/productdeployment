@@ -15,12 +15,19 @@ spec:
         app: beproduct
     spec:
       containers:
-        - name: beproduct 
-          image: 192.168.1.8:6300/beproduct:1.0
+        - name: beproduct
+          image: 192.168.1.X:6300/beproduct:1.0
           ports:
             - containerPort: 5000
           envFrom:
             - secretRef:
                 name: my-secret
       imagePullSecrets:
-        - name: regcred 
+        - name: regcred
+          resources:
+            limits:
+              cpu: 500m
+              memory: 900Mi
+            requests:
+              cpu: 250m
+              memory: 512Mi

@@ -1,3 +1,4 @@
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -9,6 +10,11 @@ spec:
   selector:
     matchLabels:
       app: feproduct
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
   template:
     metadata:
       labels:
@@ -17,8 +23,14 @@ spec:
       containers:
         - name: feproduct
           image: 192.168.1.8:6300/feproduct:1.0
-          ports:
-            - containerPort: 80
       imagePullSecrets:
         - name: regcred
-        
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              cpu: 500m
+              memory: 900Mi
+            requests:
+              cpu: 250m
+              memory: 512Mi
