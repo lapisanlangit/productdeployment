@@ -24,3 +24,10 @@ spec:
                 name: my-secret
       imagePullSecrets:
         - name: regcred
+          resources:
+            limits:
+              cpu: 500m
+              memory: 900Mi
+            requests:
+              cpu: 250m
+              memory: 512Mi
