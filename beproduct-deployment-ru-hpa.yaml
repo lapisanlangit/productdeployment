@@ -24,9 +24,6 @@ spec:
           image: 192.168.1.X:6300/beproduct:1.0
           ports:
             - containerPort: 5000
-          envFrom:
-            - secretRef:
-                name: my-secret
           resources:
             limits:
               cpu: 500m
@@ -34,5 +31,8 @@ spec:
             requests:
               cpu: 250m
               memory: 512Mi
+          envFrom:
+            - secretRef:
+                name: my-secret
       imagePullSecrets:
         - name: regcred
