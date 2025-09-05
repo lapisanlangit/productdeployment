@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: feproduct
-          image: 192.168.1.8:6300/feproduct:1.0
+          image: 192.168.1.X:6300/feproduct:1.0
           ports:
             - containerPort: 80
           resources:
